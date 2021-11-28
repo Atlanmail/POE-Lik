@@ -1,4 +1,8 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local fireballMethods = {}
+
+local projEvents = ReplicatedStorage.RemoteEvents:WaitForChild("projectileScripts")
+local projHit = projEvents.projHit
 
 function fireballMethods.onEnd(projectileModel, rayResult)
 
@@ -10,10 +14,12 @@ function fireballMethods.onEnd(projectileModel, rayResult)
     end
 
     local humanoid = rayResult.Instance:FindFirstAncestor("HitParts").Parent:FindFirstChild("Humanoid");
-
-    humanoid:takeDamage(30)
-    print("dealt damage")
-    projectileModel:Destroy()
+    if humanoid then 
+        print(humanoid)
+        ---projHit:FireServer(projectileModel, humanoid, rayResult.Position)
+        humanoid:TakeDamage(25)
+        projectileModel:Destroy()
+    end
 
 
     

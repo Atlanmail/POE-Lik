@@ -10,7 +10,7 @@ local humanoid = Player.Character:WaitForChild("Humanoid")
 
 local onClick = function(actionName, inputState, inputObj)
     if inputState == Enum.UserInputState.Begin then
-        createProj:FireServer(Player.Character.HumanoidRootPart.Position, (Mouse.Hit.Position - Player.Character.HumanoidRootPart.Position).Unit , 100) 
+        createProj:FireServer(Player.Character.HumanoidRootPart.Position, (Mouse.Hit.Position - Player.Character.HumanoidRootPart.Position).Unit * 100) 
     end
 
 
